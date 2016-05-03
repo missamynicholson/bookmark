@@ -25,3 +25,44 @@ Verbs - Store, view, tag, find
 Bookmark <= store(links, tag)
 Bookmark <= view
 Bookmark <= find(tag)
+
+#CRUD
+
+*C - Create:*
+
+SQL: CREATE TABLE students2(id serial PRIMARY KEY, name varchar(50));
+
+id | name
+----+------
+(0 rows)
+
+SQL:INSERT INTO students2 (name)
+VALUES ('robin');
+
+INSERT 0 1
+
+*R - Read:*
+
+SQL: SELECT * FROM students2;
+ id | name  
+----+-------
+  1 | robin
+(1 row)
+
+*U - Update*
+
+SQL: UPDATE students2 SET name = 'robin2' WHERE name = 'robin';
+
+id |  name  
+----+--------
+ 1 | robin2
+(1 row)
+
+
+*D - Delete*
+
+SQL: DELETE FROM students2 WHERE name = 'robin2';
+
+id | name
+----+------
+(0 rows)
