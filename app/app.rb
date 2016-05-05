@@ -28,7 +28,7 @@ class W4BookmarkManager < Sinatra::Base
     user = User.create(email: params[:email],
       password: params[:password], password_confirmation: params[:password_confirmation])
     if user.id.nil?
-      flash[:error_msg] = "Password and confirmation password do not match"
+      flash[:errors] = user.errors.full_messages
       flash[:email] = params[:email]
       redirect to('/users/new')
     else
