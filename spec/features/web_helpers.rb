@@ -6,22 +6,12 @@ def create_link_with_tag(tag)
   click_button 'Submit'
 end
 
-def sign_up
+def sign_up(params)
   visit "/users/new"
   expect(page.status_code).to eq(200)
 
-  fill_in :password, with: 'password'
-  fill_in :password_confirmation, with: 'password'
-  fill_in :email, with: 'my_email_address'
-  click_button 'Signup'
-end
-
-def sign_up_wrong
-  visit "/users/new"
-  expect(page.status_code).to eq(200)
-
-  fill_in :password, with: 'password'
-  fill_in :password_confirmation, with: 'wrong_password'
-  fill_in :email, with: 'my_email_address'
+  fill_in :password, with: params[:password]
+  fill_in :password_confirmation, with: params[:confirm_password]
+  fill_in :email, with: params[:email]
   click_button 'Signup'
 end
