@@ -1,5 +1,6 @@
 ENV['RACK_ENV'] ||= 'development'
 require 'sinatra/base'
+require 'sinatra/flash'
 require 'tilt/erb'
 require_relative 'data_mapper_setup'
 
@@ -8,6 +9,7 @@ class W4BookmarkManager < Sinatra::Base
 
   enable :sessions
   set :session_secret, 'super secret'
+   register Sinatra::Flash
 
   get '/users/new' do
     erb :'users/new'
@@ -25,8 +27,14 @@ class W4BookmarkManager < Sinatra::Base
   post '/users' do
     user = User.create(email: params[:email],
       password: params[:password], password_confirmation: params[:password_confirmation])
-    session[:user_id] = user.id
-    redirect to('/links')
+    if user.id.nil?
+      flash[:error_msg] = "Password and confirmation password do not match"
+      flash[:email] = params[:email]
+      redirect to('/users/new')
+    else
+      session[:user_id] = user.id
+      redirect to('/links')
+    end
   end
 
   post '/links' do

@@ -1,5 +1,9 @@
 <%if current_user %>
-Hello <%= current_user.email%>!
+  Hello <%= current_user.email%>!
+<%end%>
+
+<%if flash[:error_msg] %>
+  <%= flash[:error_msg] %>
 <%end%>
 
 <%= yield %>

@@ -3,13 +3,11 @@ feature "signing up" do
     expect { sign_up }.to change(User, :count).by(1)
     expect(page).to have_content "Hello my_email_address!"
     expect(User.first.email).to eq('my_email_address')
-    # user = User.create(name: 'amy', username: 'amynic', email: 'email', password: 'password')
-    # expect(user.email).to eq 'email'
-    #expect { User.create(name: 'amy', username: 'amynic', password: 'password', email: 'email') }.to change { User.count }.by(1)
-  end
+end
 
   scenario 'password confirmation on sign up' do
     expect { sign_up_wrong }.to change(User, :count).by(0)
-    expect(page).not_to have_content "Hello my_email_address!"
+    expect(current_path).to eq '/users/new'
+    expect(page).to have_content "Password and confirmation password do not match"
   end
 end

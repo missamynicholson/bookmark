@@ -13,6 +13,7 @@ gem 'pg'
 gem 'rspec'
 gem 'rake'
 gem 'bcrypt'
+gem 'sinatra-flash'
 # gem "rails"
 
 group :test do
