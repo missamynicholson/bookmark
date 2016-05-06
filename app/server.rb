@@ -1,12 +1,12 @@
 class W4BookmarkManager < Sinatra::Base
   enable :sessions
-  enable :partial_underscores
-  set :session_secret, 'super secret'
-  set :partial_template_engine, :erb
-
   register Sinatra::Flash
   register Sinatra::Partial
   use Rack::MethodOverride
+  set :session_secret, 'super secret'
+  set :partial_template_engine, :erb
+
+  enable :partial_underscores
 
   helpers do
     def current_user

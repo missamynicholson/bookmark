@@ -1,4 +1,4 @@
-<%if flash[:errors] && !flash[:errors].empty? %>
+<!-- <%if flash[:errors] && !flash[:errors].empty? %>
   <% flash[:errors].each do |error|%>
     <%= error%><br>
   <%end%>
@@ -7,6 +7,16 @@
   <form action="/users/signout" method="post">
     <input type="submit" value="Sign out">
   </form>
-<%end%>
+<%end%> -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookmark Manager</title>
+  </head>
 
-<%= yield %>
+  <body>
+    <%= partial :welcome %>
+    <%= partial :flash %>
+    <%= yield %>
+  </body>
+</html>
