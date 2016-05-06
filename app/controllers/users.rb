@@ -38,4 +38,19 @@ class W4BookmarkManager < Sinatra::Base
    flash[:goodbye] = "Good bye"
    redirect to ('/links')
   end
+
+  get '/users/password_recovery' do
+    erb :'users/password_recovery'
+  end
+
+  post '/users/recovery' do
+    flash[:message] = "Check your emails"
+    user = User.first(:email params[:email])
+    user.generate_token
+    redirect to '/users/recovery'
+  end
+
+  get '/users/recovery' do
+    erb :'users/recovery'
+  end
 end

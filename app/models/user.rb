@@ -1,5 +1,6 @@
 require 'bcrypt'
 require 'dm-validations'
+require 'securerandom'
 
 class User
   include DataMapper::Resource
@@ -10,6 +11,9 @@ class User
   property :id, Serial
   property :email, String, required: true, format: :email_address, unique: true
 	property :password_digest, Text
+  property :token, Text, unique: true
+  property :time_stamp, Time
+
 
   validates_confirmation_of :password
   #no longer needed as called in the property section above?
@@ -29,6 +33,12 @@ class User
     else
       nil
     end
+  end
+
+  def generate_token
+    self.time_stamp = Time.now
+    self.token = SecureRandom.hex
+    self.save
   end
 
 end
