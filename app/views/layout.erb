@@ -4,6 +4,9 @@
   <%end%>
 <%elsif current_user%>
   Hello <%= current_user.email%>!
+  <form action="/users/signout" method="post">
+    <input type="submit" value="Sign out">
+  </form>
 <%end%>
 
 <%= yield %>

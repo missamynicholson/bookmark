@@ -14,6 +14,7 @@ gem 'rspec'
 gem 'rake'
 gem 'bcrypt'
 gem 'sinatra-flash'
+gem 'sinatra-partial'
 # gem "rails"
 
 group :test do
