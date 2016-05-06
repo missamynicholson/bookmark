@@ -1,11 +1,9 @@
-<%if current_user %>
-  Hello <%= current_user.email%>!
-<%end%>
-
 <%if flash[:errors] && !flash[:errors].empty? %>
   <% flash[:errors].each do |error|%>
     <%= error%><br>
-    <%end%>
   <%end%>
+<%elsif current_user%>
+  Hello <%= current_user.email%>!
+<%end%>
 
 <%= yield %>

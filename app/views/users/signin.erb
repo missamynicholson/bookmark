@@ -1,15 +1,11 @@
-<form action="/users" method="post">
+<form action="/users/signin" method="post">
   <label for='password'>
   Password:
   <input type="password" name="password" required>
-  </label>
-  <label for='password_confirmation'>
-  Confirm Password:
-  <input type="password" name="password_confirmation" required>
   </label>
   <label for='email'>
   Email:
   <input type="text" name="email" value="<%=flash[:email]%>" required>
 	</label>
-  <input type="submit" value="Signup">
+  <input type="submit" value="Sign in">
 </form>

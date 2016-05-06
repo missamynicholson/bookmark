@@ -9,9 +9,15 @@ end
 def sign_up(params)
   visit "/users/new"
   expect(page.status_code).to eq(200)
-
   fill_in :password, with: params[:password]
   fill_in :password_confirmation, with: params[:confirm_password]
   fill_in :email, with: params[:email]
   click_button 'Signup'
+end
+
+def sign_in(email, password)
+  visit "/users/signin"
+  fill_in :password, with: password
+  fill_in :email, with: email
+  click_button 'Sign in'
 end
